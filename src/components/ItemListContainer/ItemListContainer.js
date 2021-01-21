@@ -3,7 +3,7 @@ import ItemDetailContainer from '../itemDetailContainer/ItemDetailContainer'
 import { useState , useEffect } from "react";
 const ItemListContainer = ({}) => {
 
-    const [item , setItem] = useState({})
+    const [items , setItems] = useState({})
     const arreglo = [
         {
             id: 0,
@@ -36,9 +36,7 @@ useEffect(() =>{
 
     getItems.then((resolve) => {
         console.log(resolve)
-            return (  resolve.length && resolve.map((item) => {
-             item.id === 2 && setItem(item)
-            }) )
+            return setItems(resolve) 
         }).catch((erro)=>  {
  
         return erro
@@ -48,12 +46,12 @@ useEffect(() =>{
   
 useEffect(() =>{
        
-console.log(item)
-},[item])
+console.log(items)
+},[items])
   
 return <>
 
-<ItemDetailContainer item = { item}></ItemDetailContainer>
+<ItemDetailContainer items = { items }></ItemDetailContainer>
 </>
 
 }
